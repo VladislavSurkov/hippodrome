@@ -59,7 +59,6 @@ function startRun() {
     return Notify.warning('Должно быть как минимум 2 участника!');
   }
 
-  refs.addPlayerForm.target.disabled = true;
   refs.tableWin.innerHTML = '';
 
   raceCounter += 1;
@@ -111,7 +110,7 @@ function createTableAll({ players, time }) {
 function getRandomTime( minSec, maxSec ) {
   const min = Number.parseInt(minSec);
   const max = Number.parseInt(maxSec);
-  console.log(min, max);
+
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
