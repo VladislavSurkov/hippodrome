@@ -17,8 +17,12 @@ refs.startBtn.addEventListener('click', startRun);
 refs.rangeInput.addEventListener('input', LevelTime);
 
 let players = [];
+
 let raceCounter = 0;
 let positionCounter = 0;
+
+let minSec = 1000;
+let maxSec = 2000;
 
 function onAddPlayer(e) {
   e.preventDefault();
@@ -80,9 +84,6 @@ function startRun() {
     ascending.map(createTableAll);
   });
 }
-
-let minSec = 1000
-let maxSec = 2000
 
 function run(players) {
   return new Promise(resolve => {
