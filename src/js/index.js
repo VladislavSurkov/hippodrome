@@ -6,12 +6,15 @@ const refs = {
   startBtn: document.querySelector('.start-btn'),
   listPlayers: document.querySelector('.players'),
   tableBody: document.querySelector('.results-table > tbody'),
-  tableWin: document.querySelector('.results-all'),
+  tableWin: document.querySelector('.results-all > tbody'),
+  rangeInput: document.querySelector('input[type="range"]'),
+  output: document.querySelector('.js-selected-value'),
 };
 
 refs.addPlayerForm.addEventListener('submit', onAddPlayer);
 refs.delete.addEventListener('click', onDelete);
 refs.startBtn.addEventListener('click', startRun);
+refs.rangeInput.addEventListener('input', LevelTime);
 
 let players = [];
 let raceCounter = 0;
@@ -79,9 +82,12 @@ function startRun() {
   });
 }
 
+let minSec = 1000
+let maxSec = 2000
+
 function run(players) {
   return new Promise(resolve => {
-    const time = getRandomTime(2000, 3000);
+    const time = getRandomTime(minSec, maxSec);
 
     setTimeout(() => {
       resolve({ players, time });
@@ -95,14 +101,24 @@ function createTableWinner({ players, time, raceCounter }) {
   refs.tableBody.insertAdjacentHTML('beforeend', tbWin);
 }
 
-function createTableAll({ players, time}) {
+function createTableAll({ players, time }) {
   positionCounter += 1;
-  const tbAll = `<thead><tr><th>Позиция</th><th>Игрок</th><th>Время</th></tr></thead>
-<tbody><tr><td>${positionCounter}</td><td>${players}</td><td>${time}</td></tr></tbody>`;
+  const tbAll = `<tr><td>${positionCounter}</td><td>${players}</td><td>${time}</td></tr>`;
 
   refs.tableWin.insertAdjacentHTML('beforeend', tbAll);
 }
 
-function getRandomTime(min, max) {
+function getRandomTime( minSec, maxSec ) {
+  const min = Number.parseInt(minSec);
+  const max = Number.parseInt(maxSec);
+  console.log(min, max);
   return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+function LevelTime(e) {
+  const lvlEl = e.target.value
+  refs.output.textContent = lvlEl;
+  const El = lvlEl * (Number(lvlEl) + 1);
+  minSec = `${lvlEl}000`
+  maxSec = `${El}000`
 }

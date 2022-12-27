@@ -24,11 +24,22 @@
           Добавить участников
         </button>
       </form>
+      <form class="level-form">
+        <p>Уровень: <span class="js-selected-value">1</span>
+        <input
+          type="range"
+          name="interest_rate"
+          value="1"
+          min="1"
+          max="5"
+          step="1"
+        />
+        
+      </form>
     </div>
     <div class="container-players">
-
       <button class="start-btn btn" disabled>Начать заезд</button>
-     
+
       <ul class="players"></ul>
 
       <button class="delete btn" disabled>Удалить участников</button>
@@ -45,7 +56,16 @@
         <tbody></tbody>
       </table>
 
-      <table class="results-all"></table>
+      <table class="results-all">
+           <thead>
+            <tr>
+              <th>Позиция</th>
+              <th>Игрок</th>
+              <th>Время</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+      </table>
     </div>
     <script src="js/index.js" type="module"></script>
   </body>

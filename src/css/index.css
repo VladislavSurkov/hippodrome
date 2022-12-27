@@ -43,6 +43,14 @@ table td {
   box-shadow: 2px 1px 3px 0px rgba(0, 0, 0, 0.3);
 
 }
+.level-form{ display: flex;
+  background-color:rgba(62, 171, 255, 0.6);;
+  border-radius: 5px;
+  color: white;
+  padding: 0 10px;
+  margin-left: 50px;
+}
+
 .container-players{
 
   display: flex;
@@ -55,7 +63,7 @@ table td {
   padding: 20px;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start ;
    justify-content:space-between;
     flex-wrap: wrap;
     gap: 15px;
